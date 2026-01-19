@@ -13,6 +13,9 @@ add_executable(vulkandemo
         src/application.cpp
         src/log/log.cpp
         src/main.cpp
+        src/buffer/vertex.h
+        src/buffer/UniformBufferObject.h
+        src/stb_image.cpp
 )
 
 # Link libraries
@@ -37,6 +40,8 @@ add_custom_command(
         DEPENDS ${CMAKE_SOURCE_DIR}/src/shader/shader.frag
         COMMENT "Compiling fragment shader"
 )
+
+file(COPY ${CMAKE_SOURCE_DIR}/src/textures DESTINATION ${CMAKE_BINARY_DIR}/)
 
 add_custom_target(shaders ALL
         DEPENDS ${CMAKE_BINARY_DIR}/vert.spv ${CMAKE_BINARY_DIR}/frag.spv
